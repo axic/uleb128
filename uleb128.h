@@ -31,12 +31,19 @@
 typedef int (*uleb128_write_u8)(void *ctx, uint8_t value);
 typedef int (*uleb128_read_u8)(void *ctx, uint8_t *value);
 
-int uleb128_encode_u64(uleb128_write_u8 write, void *ctx, uint64_t value);
-int uleb128_encode_s64(uleb128_write_u8 write, void *ctx, int64_t value);
-int uleb128_encode_padded_u64(uleb128_write_u8 write, void *ctx, uint64_t value, size_t width);
-int uleb128_encode_padded_s64(uleb128_write_u8 write, void *ctx, int64_t value, size_t width);
+struct uleb128_io {
+  uleb128_write_u8 write;
+  void *write_ctx;
+  uleb128_read_u8 read;
+  void *read_ctx;
+};
 
-int uleb128_decode_u64(uleb128_read_u8 read, void *ctx, uint64_t *value);
-int uleb128_decode_s64(uleb128_read_u8 read, void *ctx, int64_t *value);
+int uleb128_encode_u64(struct uleb128_io *io, uint64_t value);
+int uleb128_encode_s64(struct uleb128_io *io, int64_t value);
+int uleb128_encode_padded_u64(struct uleb128_io *io, uint64_t value, size_t width);
+int uleb128_encode_padded_s64(struct uleb128_io *io, int64_t value, size_t width);
+
+int uleb128_decode_u64(struct uleb128_io *io, uint64_t *value);
+int uleb128_decode_s64(struct uleb128_io *io, int64_t *value);
 
 #endif

@@ -24,32 +24,32 @@
 
 #include "uleb128.h"
 
-int uleb128_encode_u64(uleb128_write_u8 write, void *ctx, uint64_t value)
+int uleb128_encode_u64(struct uleb128_io *io, uint64_t value)
 {
   return -1;
 }
 
-int uleb128_encode_s64(uleb128_write_u8 write, void *ctx, int64_t value)
+int uleb128_encode_s64(struct uleb128_io *io, int64_t value)
 {
   return -1;
 }
 
-int uleb128_encode_padded_u64(uleb128_write_u8 write, void *ctx, uint64_t value, size_t width)
+int uleb128_encode_padded_u64(struct uleb128_io *io, uint64_t value, size_t width)
 {
   return -1;
 }
 
-int uleb128_encode_padded_s64(uleb128_write_u8 write, void *ctx, int64_t value, size_t width)
+int uleb128_encode_padded_s64(struct uleb128_io *io, int64_t value, size_t width)
 {
   return -1;
 }
 
-int uleb128_decode_u64(uleb128_read_u8 read, void *ctx, uint64_t *value)
+int uleb128_decode_u64(struct uleb128_io *io, uint64_t *value)
 {
   return -1;
 }
 
-int uleb128_decode_s64(uleb128_read_u8 read, void *ctx, int64_t *value)
+int uleb128_decode_s64(struct uleb128_io *io, int64_t *value)
 {
   return -1;
 }
